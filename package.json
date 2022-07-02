@@ -2,7 +2,7 @@
   "name": "quote-api",
   "version": "1.0.0",
   "description": "quote api build with node typescript mongodbv",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "rm -rf build/ && tsc",
     "start": "node build/server.js" 
