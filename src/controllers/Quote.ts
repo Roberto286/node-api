@@ -16,15 +16,16 @@ const createQuote = (req:Request, res: Response, next: NextFunction) => {
         .catch((err) => res.status(500).json({err}));
 }
 
-const readQuote = (req:Request, res: Response, next: NextFunction) => {
-
-}
+const readQuote = (req: Request, res: Response, next: NextFunction) => {};
 
 const readRandomQuote = (req:Request, res: Response, next: NextFunction) => {
 
 }
 
 const readAllQuotes = (req:Request, res: Response, next: NextFunction) => {
+    return Quote.find()
+        .then((quotes) => res.status(200).json({ quotes }))
+        .catch((err) => res.status(500).json({ err }));
 
 }
 
@@ -37,3 +38,5 @@ const updateQuote = (req:Request, res: Response, next: NextFunction) => {};
 const deleteQuote = (req:Request, res: Response, next: NextFunction) => {
 
 }
+
+export default { createQuote, readAllQuotes };
