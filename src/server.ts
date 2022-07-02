@@ -3,6 +3,7 @@ import http from 'http';
 import mongoose from 'mongoose';
 import {config} from './config/config';
 import Logging from './library/Logging';
+import quoteRoutes from './routes/Quote';
 
 const router = express();
 
@@ -46,10 +47,11 @@ const StartServer = () => {
     });
 
     /** Routes */
+    router.use('/quotes', quoteRoutes);    
 
     /** Healthcheck */
     router.get('/ping', (req, res, next) => res.status(200).json({ hello: 'world' }));
-
+    
     /** Error handling */
     router.use((req, res, next) => {
         const error = new Error('Not found');
@@ -57,7 +59,7 @@ const StartServer = () => {
         Logging.error(error);
 
         res.status(404).json({
-            message: error.message
+            message: error
         });
     });
 
